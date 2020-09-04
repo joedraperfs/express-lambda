@@ -1,4 +1,4 @@
-service: express-lambda-private-api
+service: express-lambda
 frameworkVersion: '>=1.0.0 <2.0.0'
 configValidationMode: error
 provider:
@@ -9,23 +9,6 @@ provider:
   deploymentBucket:
     name: qa-jenkins-release
   role: arn:aws:iam::651958565740:role/lambda-qa
-  endpointType: PRIVATE
-  vpcEndpointIds:
-    - vpce-00119c561c540e2be
-  resourcePolicy:
-    - Effect: Allow
-      Principal: '*'
-      Action: execute-api:Invoke
-      Resource:
-        - execute-api:/*
-    - Effect: Deny
-      Principal: '*'
-      Action: execute-api:Invoke
-      Resource:
-        - execute-api:/*
-      Condition:
-          StringNotEquals:
-              'aws:SourceVpce': vpce-00119c561c540e2be
 functions:
  server:
    handler: src/index.server
