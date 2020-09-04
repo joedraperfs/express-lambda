@@ -11,6 +11,7 @@ provider:
   role: arn:aws:iam::651958565740:role/lambda-qa
 functions:
  server:
+   description: Test and example of an Express Lambda application with a public API
    handler: src/index.server
    events:
      - http:

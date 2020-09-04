@@ -28,6 +28,7 @@ provider:
               'aws:SourceVpce': vpce-00119c561c540e2be
 functions:
  server:
+   description: Test and example of an Express Lambda application with a private API
    handler: src/index.server
    events:
      - http:
