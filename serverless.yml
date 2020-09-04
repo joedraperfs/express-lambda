@@ -9,6 +9,8 @@ provider:
   deploymentBucket:
     name: qa-jenkins-release
   role: arn:aws:iam::651958565740:role/lambda-qa
+  apiGateway:
+    description: Public API for the Express Lambda test/example application
 functions:
  server:
    description: Test and example of an Express Lambda application with a public API

@@ -9,6 +9,8 @@ provider:
   deploymentBucket:
     name: qa-jenkins-release
   role: arn:aws:iam::651958565740:role/lambda-qa
+  apiGateway:
+    description: Private API for the Express Lambda test/example application
   endpointType: PRIVATE
   vpcEndpointIds:
     - vpce-00119c561c540e2be
