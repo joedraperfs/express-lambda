@@ -26,3 +26,8 @@ This command will remove all AWS resources created during deploy.
 https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/
 https://epsagon.com/development/aws-lambda-express-getting-started-guide/
 
+## Creating a Private API
+https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-private-apis.html
+https://github.com/serverless/serverless/pull/5080
+https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies.html
+
