@@ -1,4 +1,4 @@
-service: express-lambda-jdtest
+service: express-lambda-private-api
 frameworkVersion: '>=1.0.0 <2.0.0'
 configValidationMode: error
 provider:
