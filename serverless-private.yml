@@ -4,16 +4,16 @@ configValidationMode: error
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: dev
-  region: us-west-2
+  stage: ${env:API_STAGE}
+  region: ${env:REGION}
   deploymentBucket:
-    name: qa-jenkins-release
-  role: arn:aws:iam::651958565740:role/lambda-qa
+    name: ${env:DEPLOYMENT_BUCKET}
+  role: ${env:LAMBDA_IAM_ROLE}
   apiGateway:
     description: Private API for the Express Lambda test/example application
   endpointType: PRIVATE
   vpcEndpointIds:
-    - vpce-00119c561c540e2be
+    - ${env:VPC_ENDPOINT_ID}
   resourcePolicy:
     - Effect: Allow
       Principal: '*'
@@ -27,7 +27,7 @@ provider:
         - execute-api:/*
       Condition:
           StringNotEquals:
-              'aws:SourceVpce': vpce-00119c561c540e2be
+              'aws:SourceVpce': ${env:VPC_ENDPOINT_ID}
 functions:
  server:
    description: Test and example of an Express Lambda application with a private API
