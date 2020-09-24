@@ -20,7 +20,7 @@ app.all('*', retrieveSecrets2);
 const jsonReply = {
   status: 'success',
   message: 'Hello World!',
-  version: '0.0.4'
+  version: '0.0.5'
 };
 
 msg('From express-lambda function.');
