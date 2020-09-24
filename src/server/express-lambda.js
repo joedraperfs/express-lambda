@@ -9,15 +9,18 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-//const port = 3000;
+const { retrieveSecrets2 } = require('./secretsManager');
+const port = 3000;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true, strict: false }));
 app.use(express.json());
+app.all('*', retrieveSecrets2);
 
 const jsonReply = {
   status: 'success',
-  message: 'Hello World!'
+  message: 'Hello World!',
+  version: '0.0.4'
 };
 
 msg('From express-lambda function.');
@@ -26,11 +29,21 @@ app.get('/test', (req, res) => {
   res.json(jsonReply);
 })
 
-module.exports = app
+app.get('/secrets', (req, res) => {
 
-//app.listen(port, () => {
-//  msg('Example app listening at http://localhost: ' + port);
-//})
+  let secrets = {
+    AC_TOKEN: process.env.AC_TOKEN,
+    AC_URL: process.env.AC_URL,
+  }
+  res.json(secrets);
+})
+
+
+app.listen(port, () => {
+  msg('Example app listening at http://localhost: ' + port);
+});
+
+module.exports = app
 
 function msg(message) {
   if(arguments.length > 1) {
